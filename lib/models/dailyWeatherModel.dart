@@ -209,7 +209,7 @@ class DailyWeatherData {
 }
 
 class Weather {
-  Description? description;
+  String? description;
   int? code;
   Icon? icon;
 
@@ -220,25 +220,26 @@ class Weather {
   });
 
   factory Weather.fromJson(Map<String, dynamic> json) => Weather(
-    description: descriptionValues.map[json["description"]],
+    // description: descriptionValues.map[json["description"]],
+    description: json["description"],
     code: json["code"],
     icon: iconValues.map[json["icon"]],
   );
 
   Map<String, dynamic> toJson() => {
-    "description": descriptionValues.reverse[description],
+    "description": description,
     "code": code,
     "icon": iconValues.reverse[icon],
   };
 }
 
-enum Description { FEW_CLOUDS, SCATTERED_CLOUDS, CLEAR_SKY }
-
-final descriptionValues = EnumValues({
-  "Clear Sky": Description.CLEAR_SKY,
-  "Few clouds": Description.FEW_CLOUDS,
-  "Scattered clouds": Description.SCATTERED_CLOUDS
-});
+// enum Description { FEW_CLOUDS, SCATTERED_CLOUDS, CLEAR_SKY }
+//
+// final descriptionValues = EnumValues({
+//   "Clear Sky": Description.CLEAR_SKY,
+//   "Few clouds": Description.FEW_CLOUDS,
+//   "Scattered clouds": Description.SCATTERED_CLOUDS
+// });
 
 enum Icon { C02_D, C01_D }
 

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class NextHoursCard extends StatefulWidget {
+class NexDaysCard extends StatefulWidget {
   final String? date;
   final String? temp;
-  const NextHoursCard({Key? key,this.date,this.temp}) : super(key: key);
+  final String? forcastStatus;
+  const NexDaysCard({Key? key,this.date,this.temp,this.forcastStatus}) : super(key: key);
 
   @override
-  State<NextHoursCard> createState() => _NextHoursCardState();
+  State<NexDaysCard> createState() => _NexDaysCardState();
 }
 
-class _NextHoursCardState extends State<NextHoursCard> {
+class _NexDaysCardState extends State<NexDaysCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,11 +36,23 @@ class _NextHoursCardState extends State<NextHoursCard> {
                   color: Colors.black45,
                   fontFamily: 'AktivGrotesk'),
                   ),
-                  Icon(Icons.ac_unit,size: 40,),
+                  Icon(Icons.sunny,size: 40,),
                   Container(
                     width: 80,
                     child: Text(
                      '${widget.temp!} °C',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontStyle: FontStyle.normal,
+                          color: Colors.black45,
+                          fontFamily: 'AktivGrotesk'),
+                    ),
+                  ),
+                  Container(
+                    width: 120,
+                    child: Text(
+                      widget.forcastStatus!,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 18,
