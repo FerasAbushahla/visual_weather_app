@@ -112,7 +112,8 @@ class _HomeState extends State<Home> {
                   child: ListView.builder(
                       physics: BouncingScrollPhysics(
                           parent: AlwaysScrollableScrollPhysics()),
-                      itemCount: dailyWeatherController.dailyWeatherList.length,
+                      itemCount: 6,
+                      // itemCount: dailyWeatherController.dailyWeatherList.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
