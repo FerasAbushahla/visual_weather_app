@@ -52,7 +52,12 @@ class _MySearchBarState extends State<MySearchBar> {
               bottom: _searchController.text.isEmpty ? 12.0 : 0.0,
             ),
           ),
-          onChanged: (value) => setState(() {}),
+          onChanged: (value) {
+            setState(() {
+              String? searchWord = value??"Gaza";
+              weatherController.getCurrentWeather(word: searchWord);
+            });
+          },
 
         ),
       ),

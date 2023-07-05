@@ -11,13 +11,13 @@ class WeatherController extends GetxController{
     getCurrentWeather();
   }
 
-  Future getCurrentWeather() async {
+  Future getCurrentWeather({String? word}) async {
     try {
       isLoading(true);
 
       WeatherModel weatherModel =
       await ApiServices.getCurrentWeather(
-         cityName: 'Gaza',
+         cityName: word == null? "Gaza":word,
       );
 
       _currentWeather(weatherModel);
