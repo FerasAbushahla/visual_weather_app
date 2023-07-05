@@ -10,13 +10,15 @@ class DailyWeatherController extends GetxController{
     getDailyWeather();
   }
 
-  Future getDailyWeather({String? word}) async {
+  Future getDailyWeather({String? word, String? lat, String? lon}) async {
     try {
       isLoading(true);
 
       DailyWeatherModel dailyWeatherModel =
       await ApiServices.getDailyWeather(
-        cityName: word == null? "Gaza":word,
+        cityName: word ??'',
+        lat: lat??'',
+        lon: lon??'',
       );
 
       dailyWeatherList.value = dailyWeatherModel.data!;

@@ -8,8 +8,8 @@ class DailyWeatherModel {
   String? cityName;
   String? countryCode;
   List<DailyWeatherData>? data;
-  String? lat;
-  String? lon;
+  dynamic lat;
+  dynamic lon;
   String? stateCode;
   String? timezone;
 

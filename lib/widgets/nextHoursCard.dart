@@ -28,7 +28,7 @@ class _NexDaysCardState extends State<NexDaysCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    widget.date!,
+                    widget.date!.substring(0,10),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                   fontSize: 18,
@@ -50,7 +50,7 @@ class _NexDaysCardState extends State<NexDaysCard> {
                     ),
                   ),
                   Container(
-                    width: 120,
+                    width: 160,
                     child: Text(
                       widget.forcastStatus!,
                       textAlign: TextAlign.center,

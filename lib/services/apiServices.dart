@@ -10,8 +10,8 @@ class ApiServices{
 
   static Future<WeatherModel> getCurrentWeather(
       {String? cityName, String? lat,String? lon,}) async {
-    print('${ApiSettings.currentWeather}&city=${cityName}');
-    var response = await client.get(Uri.parse('${ApiSettings.currentWeather}&city=${cityName}'),
+    print('${ApiSettings.currentWeather}&city=${cityName}&lat=${lat}&lon=${lon}');
+    var response = await client.get(Uri.parse('${ApiSettings.currentWeather}&city=${cityName}&lat=${lat}&lon=${lon}'),
         headers: {
           "Accept": "application/json",
 
@@ -40,8 +40,8 @@ class ApiServices{
 
   static Future<DailyWeatherModel> getDailyWeather(
       {String? cityName, String? lat,String? lon,}) async {
-    print('${ApiSettings.dailyWeather}&city=${cityName}');
-    var response = await client.get(Uri.parse('${ApiSettings.dailyWeather}&city=${cityName}'),
+    print('${ApiSettings.dailyWeather}&city=${cityName}&lat=${lat}&lon=${lon}');
+    var response = await client.get(Uri.parse('${ApiSettings.dailyWeather}&city=${cityName}&lat=${lat}&lon=${lon}'),
         headers: {
           "Accept": "application/json",
 
