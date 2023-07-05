@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_app/controllers/weatherController.dart';
 
 class MySearchBar extends StatefulWidget {
   const MySearchBar({Key? key}) : super(key: key);
@@ -9,6 +11,8 @@ class MySearchBar extends StatefulWidget {
 
 class _MySearchBarState extends State<MySearchBar> {
   final _searchController = TextEditingController();
+  WeatherController weatherController =
+  Get.put(WeatherController());
 
   @override
   Widget build(BuildContext context) {

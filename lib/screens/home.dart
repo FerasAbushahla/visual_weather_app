@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_app/controllers/weatherController.dart';
 import 'package:weather_app/widgets/nextHoursCard.dart';
 import 'package:weather_app/widgets/searchBar.dart';
 
@@ -10,6 +12,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  WeatherController weatherController =
+  Get.put(WeatherController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,26 +24,42 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
           MySearchBar(),
-          Text('City Name',style: TextStyle(
-              fontSize: 20,
-              fontStyle: FontStyle.normal,
-              color: Colors.black45,
-              fontFamily: 'AktivGrotesk'),),
-          SizedBox(height: 20,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.ac_unit,size: 40,),
-              Text('15 °C',style: TextStyle(
-                  fontSize: 40,
-                  fontStyle: FontStyle.normal,
-                  color: Colors.black,
-                  fontFamily: 'AktivGrotesk'),),
+          SizedBox(
+            height: 200,
+            child:
+                Obx((() {
+                  if (WeatherController.isLoading.value) {
+                    return CircularProgressIndicator();
+                  } else {
+                    return Column(
+                      children: [
+                        Text(weatherController.currentWeather!.data!.first!.cityName!,style: TextStyle(
+                            fontSize: 20,
+                            fontStyle: FontStyle.normal,
+                            color: Colors.black45,
+                            fontFamily: 'AktivGrotesk'),),
+                        SizedBox(height: 20,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.ac_unit,size: 40,),
+                            Text('${weatherController.currentWeather!.data!.first!.appTemp!} °C',style: TextStyle(
+                                fontSize: 40,
+                                fontStyle: FontStyle.normal,
+                                color: Colors.black,
+                                fontFamily: 'AktivGrotesk'),),
 
 
 
-            ],
+                          ],
+                        ),
+                      ],
+                    );
+                  }
+                })),
+
           ),
+
             SizedBox(height: 40),
             SizedBox(
               height: 200,

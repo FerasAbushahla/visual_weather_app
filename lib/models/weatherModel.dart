@@ -31,7 +31,7 @@ class Datum {
   int? clouds;
   String? countryCode;
   String? datetime;
-  int? dewpt;
+  double? dewpt;
   double? dhi;
   double? dni;
   double? elevAngle;
