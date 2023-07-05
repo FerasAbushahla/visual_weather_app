@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/controllers/dailyWeatherController.dart';
 import 'package:weather_app/controllers/weatherController.dart';
 
 class MySearchBar extends StatefulWidget {
@@ -13,6 +14,9 @@ class _MySearchBarState extends State<MySearchBar> {
   final _searchController = TextEditingController();
   WeatherController weatherController =
   Get.put(WeatherController());
+
+  DailyWeatherController dailyWeatherController =
+  Get.put(DailyWeatherController());
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +58,9 @@ class _MySearchBarState extends State<MySearchBar> {
           ),
           onChanged: (value) {
             setState(() {
-              String? searchWord = value??"Gaza";
+              String? searchWord = value==""?"Gaza":value;
               weatherController.getCurrentWeather(word: searchWord);
+              dailyWeatherController.getDailyWeather(word: searchWord);
             });
           },
 

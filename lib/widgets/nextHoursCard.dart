@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NextHoursCard extends StatefulWidget {
-  const NextHoursCard({Key? key}) : super(key: key);
+  final String? date;
+  final String? temp;
+  const NextHoursCard({Key? key,this.date,this.temp}) : super(key: key);
 
   @override
   State<NextHoursCard> createState() => _NextHoursCardState();
@@ -25,7 +27,7 @@ class _NextHoursCardState extends State<NextHoursCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'hours',
+                    widget.date!,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                   fontSize: 18,
@@ -37,7 +39,7 @@ class _NextHoursCardState extends State<NextHoursCard> {
                   Container(
                     width: 80,
                     child: Text(
-                      "33°C",
+                     '${widget.temp!} °C',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 18,
