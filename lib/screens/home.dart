@@ -31,7 +31,6 @@ class _HomeState extends State<Home> {
         dailyWeatherController.getDailyWeather(
             lat: position!.latitude.toString(),
             lon: position!.longitude.toString());
-
       });
     });
   }
@@ -78,9 +77,10 @@ class _HomeState extends State<Home> {
             if (position == null) ...[
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-
                 children: [
-                  SizedBox(height: 150,),
+                  SizedBox(
+                    height: 150,
+                  ),
                   SizedBox(child: Center(child: CircularProgressIndicator())),
                 ],
               ),
@@ -93,6 +93,8 @@ class _HomeState extends State<Home> {
                     return SizedBox(
                         height: 20,
                         child: Center(child: CircularProgressIndicator()));
+                  } else if (weatherController.currentWeather.data == null) {
+                    return Icon(Icons.error_outline_rounded, size: 40);
                   } else {
                     return Column(
                       children: [
@@ -163,7 +165,10 @@ class _HomeState extends State<Home> {
                     ],
                   );
                 } else if (dailyWeatherController.dailyWeatherList.isEmpty) {
-                  return Icon(Icons.error_outline_rounded, size: 40);
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 80),
+                    child: Icon(Icons.error_outline_rounded, size: 40),
+                  );
                 } else {
                   return SizedBox(
                     height: 200,
